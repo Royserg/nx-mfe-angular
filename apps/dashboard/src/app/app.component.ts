@@ -11,6 +11,7 @@ import { UserService } from '@angular-mfe/shared/data-access-user';
     <div *ngIf="isLoggedIn$ | async; else signIn">
       You are authenticated so you can see this content.
     </div>
+
     <ng-template #signIn>
       <router-outlet></router-outlet>
     </ng-template>
