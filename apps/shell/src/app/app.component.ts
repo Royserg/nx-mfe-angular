@@ -7,7 +7,7 @@ import { UserService } from '@angular-mfe/shared/data-access-user';
 @Component({
   selector: 'angular-mfe-root',
   template: `
-    <div class="dashboard-nav">Admin Dashboard</div>
+    <div class="shell-nav">Admin Shell</div>
 
     <router-outlet></router-outlet>
     <!-- <div *ngIf="isLoggedIn$ | async; else signIn">
