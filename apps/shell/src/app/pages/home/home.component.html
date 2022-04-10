@@ -1,7 +1,8 @@
-<!-- Card for each page -->
 <div class="card" routerLink="todo">
   <div>Todo</div>
+  <p>Online: {{ todoService$ | async }}</p>
 </div>
 <div class="card" routerLink="settings">
   <div>Settings</div>
+  <p>Online: {{ settingsService$ | async }}</p>
 </div>

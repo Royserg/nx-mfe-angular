@@ -1,20 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MfeHpCheckService } from '../../services';
-import { HomeComponent } from './home.component';
+import { MfeErrorComponent } from './mfe-error.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [MfeErrorComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: HomeComponent,
+        component: MfeErrorComponent,
       },
     ]),
   ],
-  providers: [MfeHpCheckService],
+  providers: [],
 })
-export class HomeModule {}
+export class MfeErrorModule {}

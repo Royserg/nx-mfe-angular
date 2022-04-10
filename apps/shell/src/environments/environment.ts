@@ -4,6 +4,12 @@
 
 export const environment = {
   production: false,
+
+  mfe: {
+    login: 'http://localhost:4201',
+    todo: 'http://localhost:4202',
+    settings: 'http://localhost:4203',
+  },
 };
 
 /*
