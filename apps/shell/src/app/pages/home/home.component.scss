@@ -1,0 +1,19 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.card {
+  padding: 2rem;
+  border: 1px solid grey;
+
+  &:hover {
+    cursor: pointer;
+    background: grey;
+    color: #fff;
+    transition: all 0.5s;
+  }
+}

@@ -6,19 +6,23 @@ import { UserService } from '@angular-mfe/shared/data-access-user';
 
 @Component({
   selector: 'angular-mfe-root',
+
   template: `
-    <div class="shell-nav">Admin Shell</div>
+    <nav class="navbar">
+      <div class="navbar-logo" routerLink="/">Home</div>
 
-    <router-outlet></router-outlet>
-    <!-- <div *ngIf="isLoggedIn$ | async; else signIn">
-      You are authenticated so you can see this content.
-    </div>
+      <ng-container *ngIf="isLoggedIn$ | async">
+        <div class="logout-btn" (click)="logout()">Logout</div>
+      </ng-container>
+    </nav>
 
-    <ng-template #signIn>
+    <div class="divider"></div>
+
+    <section class="main-container">
       <router-outlet></router-outlet>
-    </ng-template> -->
+    </section>
   `,
-  styles: [``],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   isLoggedIn$ = this.userService.isUserLoggedIn$;
@@ -26,13 +30,16 @@ export class AppComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe(console.log);
-    // this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe((loggedIn) => {
-    //   if (!loggedIn) {
-    //     this.router.navigateByUrl('login');
-    //   } else {
-    //     this.router.navigateByUrl('');
-    //   }
-    // });
+    this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe((loggedIn) => {
+      if (!loggedIn) {
+        this.router.navigateByUrl('login');
+      } else {
+        this.router.navigateByUrl('');
+      }
+    });
+  }
+
+  logout(): void {
+    this.userService.logout();
   }
 }
