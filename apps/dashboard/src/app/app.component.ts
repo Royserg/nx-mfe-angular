@@ -8,13 +8,15 @@ import { UserService } from '@angular-mfe/shared/data-access-user';
   selector: 'angular-mfe-root',
   template: `
     <div class="dashboard-nav">Admin Dashboard</div>
-    <div *ngIf="isLoggedIn$ | async; else signIn">
+
+    <router-outlet></router-outlet>
+    <!-- <div *ngIf="isLoggedIn$ | async; else signIn">
       You are authenticated so you can see this content.
     </div>
 
     <ng-template #signIn>
       <router-outlet></router-outlet>
-    </ng-template>
+    </ng-template> -->
   `,
   styles: [``],
 })
@@ -24,12 +26,13 @@ export class AppComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe((loggedIn) => {
-      if (!loggedIn) {
-        this.router.navigateByUrl('login');
-      } else {
-        this.router.navigateByUrl('');
-      }
-    });
+    this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe(console.log);
+    // this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe((loggedIn) => {
+    //   if (!loggedIn) {
+    //     this.router.navigateByUrl('login');
+    //   } else {
+    //     this.router.navigateByUrl('');
+    //   }
+    // });
   }
 }

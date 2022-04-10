@@ -1,27 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { loadRemoteModule } from '@nrwl/angular/mfe';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(
-      [
-        {
-          path: 'login',
-          loadChildren: () =>
-            loadRemoteModule('login', './Module').then(
-              (m) => m.RemoteEntryModule
-            ),
-        },
-      ],
-      { initialNavigation: 'enabledBlocking' }
-    ),
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
