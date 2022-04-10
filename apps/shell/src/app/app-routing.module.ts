@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule('todo', './Module').then((m) => m.RemoteEntryModule),
   },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      loadRemoteModule('settings', './Module').then((m) => m.RemoteEntryModule),
+  },
   { path: '**', redirectTo: '' },
 ];
 

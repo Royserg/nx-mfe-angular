@@ -3,6 +3,8 @@
   "projects": {
     "login": "apps/login",
     "login-e2e": "apps/login-e2e",
+    "settings": "apps/settings",
+    "settings-e2e": "apps/settings-e2e",
     "shared-data-access-user": "libs/shared/data-access-user",
     "shell": "apps/shell",
     "shell-e2e": "apps/shell-e2e",

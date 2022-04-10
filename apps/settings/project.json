@@ -1,24 +1,24 @@
 {
   "projectType": "application",
-  "root": "apps/shell",
-  "sourceRoot": "apps/shell/src",
+  "root": "apps/settings",
+  "sourceRoot": "apps/settings/src",
   "prefix": "angular-mfe",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/shell",
-        "index": "apps/shell/src/index.html",
-        "main": "apps/shell/src/main.ts",
-        "polyfills": "apps/shell/src/polyfills.ts",
-        "tsConfig": "apps/shell/tsconfig.app.json",
+        "outputPath": "dist/apps/settings",
+        "index": "apps/settings/src/index.html",
+        "main": "apps/settings/src/main.ts",
+        "polyfills": "apps/settings/src/polyfills.ts",
+        "tsConfig": "apps/settings/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-        "styles": ["apps/shell/src/styles.scss"],
+        "assets": ["apps/settings/src/favicon.ico", "apps/settings/src/assets"],
+        "styles": ["apps/settings/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/shell/webpack.config.js"
+          "path": "apps/settings/webpack.config.js"
         }
       },
       "configurations": {
@@ -37,13 +37,13 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/shell/src/environments/environment.ts",
-              "with": "apps/shell/src/environments/environment.prod.ts"
+              "replace": "apps/settings/src/environments/environment.ts",
+              "with": "apps/settings/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/shell/webpack.prod.config.js"
+            "path": "apps/settings/webpack.prod.config.js"
           }
         },
         "development": {
@@ -61,50 +61,39 @@
       "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
-          "browserTarget": "shell:build:production"
+          "browserTarget": "settings:build:production"
         },
         "development": {
-          "browserTarget": "shell:build:development"
+          "browserTarget": "settings:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "port": 4203,
+        "publicHost": "http://localhost:4203"
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "shell:build"
+        "browserTarget": "settings:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/shell/src/**/*.ts",
-          "apps/shell/src/**/*.html"
+          "apps/settings/src/**/*.ts",
+          "apps/settings/src/**/*.html"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/shell"],
+      "outputs": ["coverage/apps/settings"],
       "options": {
-        "jestConfig": "apps/shell/jest.config.js",
+        "jestConfig": "apps/settings/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "serve-mfe": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": [
-          "nx serve settings",
-          "nx serve login",
-          "nx serve todo",
-          "nx serve shell"
-        ]
       }
     }
   },
