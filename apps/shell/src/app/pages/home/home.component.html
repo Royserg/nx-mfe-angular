@@ -1,8 +1,22 @@
-<div class="card" routerLink="todo">
-  <div>Todo</div>
-  <p>Online: {{ todoService$ | async }}</p>
+<div class="apps-container">
+  <div class="card" routerLink="todo">
+    <div>Todo</div>
+    <p>Online: {{ todoService$ | async }}</p>
+  </div>
+  <div class="card" routerLink="settings">
+    <div>Settings</div>
+    <p>Online: {{ settingsService$ | async }}</p>
+  </div>
 </div>
-<div class="card" routerLink="settings">
-  <div>Settings</div>
-  <p>Online: {{ settingsService$ | async }}</p>
-</div>
+
+<div class="divider"></div>
+
+<section>
+  <h3 class="mb-2">Todos:</h3>
+
+  <ul>
+    <ng-container *ngFor="let todo of todos$ | async">
+      <li class="todo">{{ todo.name }}</li>
+    </ng-container>
+  </ul>
+</section>

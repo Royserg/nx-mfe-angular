@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/store",
+  "sourceRoot": "libs/shared/store/src",
+  "prefix": "angular-mfe",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/store"],
+      "options": {
+        "jestConfig": "libs/shared/store/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/store/src/**/*.ts",
+          "libs/shared/store/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

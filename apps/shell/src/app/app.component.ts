@@ -31,11 +31,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe((loggedIn) => {
-      if (!loggedIn) {
-        this.router.navigateByUrl('login');
-      } else {
-        this.router.navigateByUrl('');
-      }
+      // if (!loggedIn) {
+      //   this.router.navigateByUrl('login');
+      // } else {
+      //   this.router.navigateByUrl('');
+      // }
     });
   }
 

@@ -11,10 +11,12 @@ export class MfeHpCheckService {
 
   hpCheckTodo() {
     return this.isUrlUp(`${env.mfe.todo}/remoteEntry.mjs`);
+    // return this.isUrlUp(`${env.mfe.todo}/remoteEntry.js`);
   }
 
   hpCheckSettings() {
     return this.isUrlUp(`${env.mfe.settings}/remoteEntry.mjs`);
+    // return this.isUrlUp(`${env.mfe.settings}/remoteEntry.js`);
   }
 
   isUrlUp(url: string) {

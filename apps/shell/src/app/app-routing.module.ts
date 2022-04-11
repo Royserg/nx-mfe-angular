@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'todo',
     loadChildren: () =>
-      loadRemoteModule('todo', './Module')
+      loadRemoteModule('todo', 'Module')
         .then((m) => m.RemoteEntryModule)
         .catch(() =>
           import('./pages/placeholder/mfe-error/mfe-error.module').then(

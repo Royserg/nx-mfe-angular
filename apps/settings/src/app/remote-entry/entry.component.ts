@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'angular-mfe-settings-entry',
   template: `<div class="remote-entry">
-    <h2>settings's Remote Entry Component</h2>
+    <h2>Settings Component</h2>
   </div>`,
   styles: [
     `

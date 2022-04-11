@@ -6,6 +6,7 @@
     "settings": "apps/settings",
     "settings-e2e": "apps/settings-e2e",
     "shared-data-access-user": "libs/shared/data-access-user",
+    "shared-store": "libs/shared/store",
     "shell": "apps/shell",
     "shell-e2e": "apps/shell-e2e",
     "todo": "apps/todo",

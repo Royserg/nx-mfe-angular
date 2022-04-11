@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, distinctUntilChanged, Subscription } from 'rxjs';
 import { MfeHpCheckService } from '../../services';
+// import { UserService } from '@angular-mfe/shared/data-access-user';
+import { TodoService } from '@angular-mfe/shared/store';
 
 @Component({
   selector: 'angular-mfe-shell-home',
@@ -14,7 +16,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   todoService$ = new BehaviorSubject(false);
   settingsService$ = new BehaviorSubject(false);
 
-  constructor(private readonly mfeHpCheck: MfeHpCheckService) {}
+  todos$ = this.todoService.todos$;
+
+  constructor(
+    private readonly mfeHpCheck: MfeHpCheckService,
+    private readonly todoService: TodoService
+  ) {}
 
   ngOnInit(): void {
     this.todoServiceSubscription = this.mfeHpCheck
