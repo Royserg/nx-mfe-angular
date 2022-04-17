@@ -1,52 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '@angular-mfe/shared/data-access-user';
+import { distinctUntilChanged } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'angular-mfe-login-entry',
   template: `
-    <div class="login-app">
+    <main class="login-container">
+      <div class="hint">
+        <p>username: <code>demo</code></p>
+        <p>password: <code>demo</code></p>
+      </div>
+
       <form class="login-form" (ngSubmit)="login()">
-        <label>
+        <label class="mb-1">
           Username:
-          <input type="text" name="username" [(ngModel)]="username" />
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            [(ngModel)]="username"
+          />
         </label>
-        <label>
+
+        <label class="mb-1">
           Password:
-          <input type="password" name="password" [(ngModel)]="password" />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="password"
+          />
         </label>
-        <button type="submit">Login</button>
+
+        <button type="submit" class="submit-btn">Login</button>
       </form>
-      <div *ngIf="isLoggedIn$ | async">User is logged in!</div>
-    </div>
+    </main>
   `,
-  styles: [
-    `
-      .login-app {
-        width: 30vw;
-        border: 2px dashed black;
-        padding: 8px;
-        margin: 0 auto;
-      }
-      .login-form {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin: 0 auto;
-        padding: 8px;
-      }
-      label {
-        display: block;
-      }
-    `,
-  ],
+  styleUrls: ['./entry.component.scss'],
 })
-export class RemoteEntryComponent {
+export class RemoteEntryComponent implements OnInit {
   username = '';
   password = '';
 
-  isLoggedIn$ = this.userService.isUserLoggedIn$;
+  constructor(private userService: UserService, private router: Router) {}
 
-  constructor(private userService: UserService) {}
+  ngOnInit(): void {
+    this.userService.isUserLoggedIn$
+      .pipe(distinctUntilChanged())
+      .subscribe((isLoggedIn) => {
+        if (isLoggedIn) {
+          this.router.navigateByUrl('/');
+        }
+      });
+  }
 
   login() {
     this.userService.checkCredentials(this.username, this.password);

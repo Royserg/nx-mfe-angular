@@ -21,9 +21,11 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
+        canLoad: [AuthGuard],
         loadChildren: () =>
           import('./pages/home/home.module').then((m) => m.HomeModule),
       },
