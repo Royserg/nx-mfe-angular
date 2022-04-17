@@ -1,0 +1,28 @@
+:host {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.refresh-btn {
+  width: 100%;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background: orangered;
+  box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.4);
+  transition: 0.5s all ease;
+
+  &:hover {
+    color: orangered;
+    background: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px rgba($color: #000000, $alpha: 0.2);
+  }
+}

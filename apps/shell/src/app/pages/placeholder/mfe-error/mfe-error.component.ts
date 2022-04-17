@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: 'mfe-error.component.html',
   styleUrls: ['./mfe-error.component.scss'],
 })
-export class MfeErrorComponent {}
+export class MfeErrorComponent {
+  handlePageRefresh(): void {
+    window.location.reload();
+  }
+}
