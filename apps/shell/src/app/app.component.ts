@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { distinctUntilChanged } from 'rxjs/operators';
-
 import { UserService } from '@angular-mfe/shared/data-access-user';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'angular-mfe-root',
@@ -24,20 +21,10 @@ import { UserService } from '@angular-mfe/shared/data-access-user';
   `,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   isLoggedIn$ = this.userService.isUserLoggedIn$;
 
-  constructor(private userService: UserService, private router: Router) {}
-
-  ngOnInit() {
-    this.isLoggedIn$.pipe(distinctUntilChanged()).subscribe((loggedIn) => {
-      // if (!loggedIn) {
-      //   this.router.navigateByUrl('login');
-      // } else {
-      //   this.router.navigateByUrl('');
-      // }
-    });
-  }
+  constructor(private userService: UserService) {}
 
   logout(): void {
     this.userService.logout();
