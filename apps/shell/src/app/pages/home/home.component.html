@@ -1,14 +1,59 @@
 <div class="apps-container">
-  <div class="card" routerLink="todo">
-    <div>Todo</div>
-    <p>Online: {{ todoService$ | async }}</p>
-  </div>
-  <div class="card" routerLink="settings">
-    <div>Settings</div>
-    <p>Online: {{ settingsService$ | async }}</p>
-  </div>
+  <!-- Micro frontends -->
+  <ng-container
+    [ngTemplateOutlet]="content"
+    [ngTemplateOutletContext]="{
+      todoService: todoService$ | async,
+      settingsService: settingsService$ | async
+    }"
+  ></ng-container>
+
+  <ng-template
+    #content
+    let-settingsService="settingsService"
+    let-todoService="todoService"
+  >
+    <div
+      [ngClass]="{
+        card: true,
+        'service-online': todoService,
+        'service-offline': !todoService
+      }"
+      routerLink="todo"
+    >
+      <p>Todo Service</p>
+      <p
+        [ngClass]="{
+          'text-red': !todoService,
+          'text-green': todoService
+        }"
+      >
+        {{ todoService ? 'Online' : 'Offline' }}
+      </p>
+    </div>
+
+    <div
+      [ngClass]="{
+        card: true,
+        'service-online': settingsService,
+        'service-offline': !settingsService
+      }"
+      routerLink="settings"
+    >
+      <div>Settings</div>
+      <p
+        [ngClass]="{
+          'text-red': !settingsService,
+          'text-green': settingsService
+        }"
+      >
+        {{ settingsService ? 'Online' : 'Offline' }}
+      </p>
+    </div>
+  </ng-template>
 </div>
 
+<!-- Not needed -->
 <div class="divider"></div>
 
 <section>

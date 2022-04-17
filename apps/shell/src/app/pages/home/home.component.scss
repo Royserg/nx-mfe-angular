@@ -17,7 +17,7 @@
 
 .card {
   padding: 2rem;
-  border: 1px solid grey;
+  border: 2px solid grey;
 
   &:hover {
     cursor: pointer;
@@ -25,6 +25,22 @@
     color: #fff;
     transition: all 0.5s;
   }
+}
+
+.service-online {
+  border-color: green;
+}
+
+.service-offline {
+  border-color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-red {
+  color: red;
 }
 
 .divider {
