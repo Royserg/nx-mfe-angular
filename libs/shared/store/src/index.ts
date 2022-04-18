@@ -1,2 +1,3 @@
 export * from './lib/shared-store.module';
-export * from './lib/todo.service';
+export * from './lib/todo';
+export * from './lib/user';
