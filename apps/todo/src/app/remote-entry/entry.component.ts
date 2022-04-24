@@ -3,51 +3,45 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'angular-mfe-todo-entry',
-  template: `<div class="remote-entry">
-      <h2>TODO App</h2>
-    </div>
+  template: `
+    <h2 class="app-header">TODO MicroFrontend</h2>
 
     <div class="divider"></div>
 
-    <div>
+    <main>
       <form class="todo-form" (ngSubmit)="addTodo()">
         <label>
           Todo:
           <input
             type="text"
             name="todo"
-            placeholder="Todo"
+            placeholder="New todo"
             [(ngModel)]="todo"
           />
         </label>
-        <button type="submit">Save</button>
+        <button class="btn submit-btn" type="submit">Save</button>
       </form>
-    </div>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <div>
-      <h4>Todos</h4>
+      <div class="todo-list-container">
+        <h4 class="todo-list-header">Your todos</h4>
 
-      <ul>
-        <ng-container *ngFor="let todo of todos$ | async">
-          <li>{{ todo.name }}</li>
+        <ng-container *ngIf="(todos$ | async)!.length > 0; else placeholder">
+          <ul>
+            <ng-container *ngFor="let todo of todos$ | async">
+              <li>{{ todo.name }}</li>
+            </ng-container>
+          </ul>
         </ng-container>
-      </ul>
-    </div> `,
-  styles: [
-    `
-      .remote-entry {
-        background-color: #143055;
-        color: white;
-        padding: 5px;
-      }
 
-      .divider {
-        margin-bottom: 2rem;
-      }
-    `,
-  ],
+        <ng-template #placeholder>
+          <p>You don't have currently any Todo</p>
+        </ng-template>
+      </div>
+    </main>
+  `,
+  styleUrls: ['./entry.component.scss'],
 })
 export class RemoteEntryComponent {
   todo = '';
