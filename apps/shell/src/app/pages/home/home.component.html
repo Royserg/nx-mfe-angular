@@ -57,12 +57,15 @@
 <div class="divider"></div>
 
 <section>
-  <!-- TODO: add audit store -->
   <h3 class="mb-2">Logs:</h3>
 
-  <ul>
-    <ng-container *ngFor="let todo of todos$ | async">
-      <li class="todo">{{ todo.name }}</li>
-    </ng-container>
-  </ul>
+  <ng-container *ngIf="(auditEntries$ | async)!.length > 0; else placeholder">
+    <ul class="audit-list">
+      <ng-container *ngFor="let entry of auditEntries$ | async">
+        <li class="audit-entry">{{ entry.description }}</li>
+      </ng-container>
+    </ul>
+  </ng-container>
+
+  <ng-template #placeholder> Log is empty </ng-template>
 </section>

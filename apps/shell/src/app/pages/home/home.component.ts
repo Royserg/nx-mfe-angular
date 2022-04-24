@@ -1,8 +1,7 @@
+import { AuditQuery } from '@angular-mfe/shared/store';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, distinctUntilChanged, Subscription } from 'rxjs';
 import { MfeHpCheckService } from '../../services';
-// import { UserService } from '@angular-mfe/shared/data-access-user';
-import { TodoQuery, TodoService } from '@angular-mfe/shared/store';
 
 @Component({
   selector: 'angular-mfe-shell-home',
@@ -16,11 +15,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   todoService$ = new BehaviorSubject(false);
   settingsService$ = new BehaviorSubject(false);
 
-  todos$ = this.todoQuery.selectAll();
+  auditEntries$ = this.auditQuery.selectAll();
 
   constructor(
     private readonly mfeHpCheck: MfeHpCheckService,
-    private todoQuery: TodoQuery
+    private auditQuery: AuditQuery
   ) {}
 
   ngOnInit(): void {

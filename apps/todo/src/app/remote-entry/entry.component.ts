@@ -1,4 +1,8 @@
-import { TodoQuery, TodoService } from '@angular-mfe/shared/store';
+import {
+  AuditService,
+  TodoQuery,
+  TodoService,
+} from '@angular-mfe/shared/store';
 import { Component } from '@angular/core';
 
 @Component({
@@ -47,7 +51,11 @@ export class RemoteEntryComponent {
   todo = '';
   todos$ = this.todoQuery.selectAll();
 
-  constructor(private todoService: TodoService, private todoQuery: TodoQuery) {}
+  constructor(
+    private todoService: TodoService,
+    private todoQuery: TodoQuery,
+    private auditService: AuditService
+  ) {}
 
   addTodo() {
     this.todoService.addTodo({
@@ -55,6 +63,7 @@ export class RemoteEntryComponent {
       completed: false,
     });
 
+    this.auditService.addEntry(`Todo: "${this.todo}" has been added.`);
     this.todo = '';
   }
 }
