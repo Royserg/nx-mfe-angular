@@ -21,14 +21,14 @@
       }"
       routerLink="todo"
     >
-      <p>Todo Service</p>
+      <p>Todo MicroFrontend</p>
       <p
         [ngClass]="{
           'text-red': !todoService,
           'text-green': todoService
         }"
       >
-        {{ todoService ? 'Online' : 'Offline' }}
+        status: {{ todoService ? 'Online' : 'Offline' }}
       </p>
     </div>
 
@@ -40,14 +40,14 @@
       }"
       routerLink="settings"
     >
-      <div>Settings</div>
+      <div>Settings MicroFrontend</div>
       <p
         [ngClass]="{
           'text-red': !settingsService,
           'text-green': settingsService
         }"
       >
-        {{ settingsService ? 'Online' : 'Offline' }}
+        status: {{ settingsService ? 'Online' : 'Offline' }}
       </p>
     </div>
   </ng-template>
@@ -57,7 +57,8 @@
 <div class="divider"></div>
 
 <section>
-  <h3 class="mb-2">Todos:</h3>
+  <!-- TODO: add audit store -->
+  <h3 class="mb-2">Logs:</h3>
 
   <ul>
     <ng-container *ngFor="let todo of todos$ | async">
