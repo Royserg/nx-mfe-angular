@@ -7,6 +7,7 @@ import { UserStore, UserState } from './user.store';
 })
 export class UserQuery extends Query<UserState> {
   isLoggedIn$ = this.select('isLoggedIn');
+  name$ = this.select('name');
 
   constructor(store: UserStore) {
     super(store);

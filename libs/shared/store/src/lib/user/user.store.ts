@@ -12,7 +12,7 @@ export const createInitialState = (): UserState => {
 
   return {
     isLoggedIn: !!user,
-    name: '',
+    name: user ? user : '',
   };
 };
 
