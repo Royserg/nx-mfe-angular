@@ -1,4 +1,4 @@
-import { UserService } from '@angular-mfe/shared/data-access-user';
+import { UserQuery } from '@angular-mfe/shared/store';
 import { Injectable } from '@angular/core';
 import { CanActivate, CanLoad, Router } from '@angular/router';
 import { distinctUntilChanged, firstValueFrom, map, Observable } from 'rxjs';
@@ -7,10 +7,10 @@ import { distinctUntilChanged, firstValueFrom, map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthGuard implements CanLoad, CanActivate {
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userQuery: UserQuery) {}
 
   canActivate(): Observable<boolean> {
-    return this.userService.isUserLoggedIn$.pipe(
+    return this.userQuery.isLoggedIn$.pipe(
       distinctUntilChanged(),
       map((isLoggedIn) => {
         if (!isLoggedIn) {
@@ -24,7 +24,7 @@ export class AuthGuard implements CanLoad, CanActivate {
   }
 
   async canLoad() {
-    const isLoggedIn = await firstValueFrom(this.userService.isUserLoggedIn$);
+    const isLoggedIn = await firstValueFrom(this.userQuery.isLoggedIn$);
 
     if (!isLoggedIn) {
       this.router.navigateByUrl('/login');

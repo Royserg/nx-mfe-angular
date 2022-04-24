@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '@angular-mfe/shared/data-access-user';
+import { UserQuery, UserService } from '@angular-mfe/shared/store';
 import { distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -43,10 +43,14 @@ export class RemoteEntryComponent implements OnInit {
   username = '';
   password = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userQuery: UserQuery,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.userService.isUserLoggedIn$
+    this.userQuery.isLoggedIn$
       .pipe(distinctUntilChanged())
       .subscribe((isLoggedIn) => {
         if (isLoggedIn) {

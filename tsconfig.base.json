@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-mfe/shared/data-access-user": [
-        "libs/shared/data-access-user/src/index.ts"
-      ],
       "@angular-mfe/shared/store": ["libs/shared/store/src/index.ts"]
     }
   },

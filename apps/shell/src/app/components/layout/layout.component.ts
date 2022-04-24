@@ -1,4 +1,4 @@
-import { UserService } from '@angular-mfe/shared/data-access-user';
+import { UserQuery, UserService } from '@angular-mfe/shared/store';
 import { Component } from '@angular/core';
 
 @Component({
@@ -22,9 +22,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent {
-  isLoggedIn$ = this.userService.isUserLoggedIn$;
+  isLoggedIn$ = this.userQuery.isLoggedIn$;
 
-  constructor(private userService: UserService) {}
+  constructor(private userQuery: UserQuery, private userService: UserService) {}
 
   logout(): void {
     this.userService.logout();

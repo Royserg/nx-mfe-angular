@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
+import { LOCAL_STORAGE_USER } from './constants';
 
 export interface UserState {
+  isLoggedIn: boolean;
   name: string;
 }
 
 export const createInitialState = (): UserState => {
+  const user = localStorage.getItem(LOCAL_STORAGE_USER);
+
   return {
+    isLoggedIn: !!user,
     name: '',
   };
 };
